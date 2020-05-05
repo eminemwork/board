@@ -2,7 +2,6 @@ package com.example.board.controller;
 
 import com.example.board.controller.dto.PostListResponseDto;
 import com.example.board.controller.dto.PostsSaveRequestDto;
-import com.example.board.model.Post;
 import com.example.board.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
@@ -24,5 +23,4 @@ public class PostController {
     public List<PostListResponseDto> getAllPosts(Model model) {
         return postService.findAllDesc();
     }
-
 }
