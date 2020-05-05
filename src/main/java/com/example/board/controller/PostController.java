@@ -1,13 +1,14 @@
 package com.example.board.controller;
 
+import com.example.board.controller.dto.PostListResponseDto;
 import com.example.board.controller.dto.PostsSaveRequestDto;
 import com.example.board.model.Post;
-import com.example.board.repository.PostRepository;
 import com.example.board.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -19,8 +20,9 @@ public class PostController {
         return postService.save(requestDto);
     }
 
-//    @GetMapping("/post")
-//    public @ResponseBody Iterable<Post> getAllPosts() {
-//        return postRepository.findAll();
-//    }
+    @GetMapping("/post")
+    public List<PostListResponseDto> getAllPosts(Model model) {
+        return postService.findAllDesc();
+    }
+
 }
