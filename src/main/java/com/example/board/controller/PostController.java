@@ -1,30 +1,26 @@
 package com.example.board.controller;
 
+import com.example.board.controller.dto.PostsSaveRequestDto;
 import com.example.board.model.Post;
 import com.example.board.repository.PostRepository;
+import com.example.board.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping(path="/post")
+@RequiredArgsConstructor
+@RestController
 public class PostController {
-    @Autowired
-    private PostRepository postRepository;
+    private final PostService postService;
 
-    @PostMapping
-    public @ResponseBody String addPost(@RequestParam String title, @RequestParam String author, @RequestParam String content) {
-        System.out.println(title + " " + author + " " + content);
-        Post p = new Post();
-        p.setTitle(title);
-        p.setAuthor(author);
-        p.setContent(content);
-        postRepository.save(p);
-        return "Saved";
+    @PostMapping("/post")
+    public Long addPost(@RequestBody PostsSaveRequestDto requestDto) {
+        return postService.save(requestDto);
     }
 
-    @GetMapping
-    public @ResponseBody Iterable<Post> getAllPosts() {
-        return postRepository.findAll();
-    }
+//    @GetMapping("/post")
+//    public @ResponseBody Iterable<Post> getAllPosts() {
+//        return postRepository.findAll();
+//    }
 }

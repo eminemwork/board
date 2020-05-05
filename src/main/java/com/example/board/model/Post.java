@@ -1,6 +1,8 @@
 package com.example.board.model;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -15,11 +17,11 @@ import java.time.LocalDateTime;
 * */
 @Entity
 @Getter
-@Setter
+@NoArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String title;
     private String author;
 
@@ -30,6 +32,10 @@ public class Post {
     @CreatedDate
     private LocalDateTime createdDate;
 
-
-
+    @Builder
+    public Post(String title, String author, String content) {
+        this.title = title;
+        this.author = author;
+        this.content = content;
+    }
 }
