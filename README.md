@@ -32,3 +32,14 @@
 - Spring boot, Gradle
 - mysql(docker)
 
+
+<details>
+<summary>변경 사항</summary>
+1. spring boot devtools - live reload 적용
+</details>
+
+<details>
+<summary>궁금증</summary>
+1. gradle 은 어떻게 동작하는가 (configuration compile, development option)
+
+</details>
